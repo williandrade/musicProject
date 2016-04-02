@@ -1,0 +1,57 @@
+  <link rel="stylesheet" href="/app/lyric/lyric.css">
+
+<span class="alert-correction" ng-class="{'show': alertAcert.open == true}">
+  <img ng-if="alertAcert.acert" src="assets/correct.png">
+  <img ng-if="!alertAcert.acert" src="assets/wrong.png">
+</span>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" ng-click="menuClose = !menuClose">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Music App</a>
+    </div>
+
+    <div class="collapse navbar-collapse" uib-collapse="menuClose">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group" uib-dropdown is-open="search.open">
+          <input type="text" class="form-control" placeholder="Search" ng-model="search.userWrite" ng-keyup="doSearch(search.userWrite)">
+          <ul class="uib-dropdown-menu" role="menu" aria-labelledby="single-button">
+            <li role="menuitem"><a ng-repeat="itemRetorno in search.retornoSearch track by $index" ng-click="openLyric(itemRetorno, 20)">{{itemRetorno.track_name}} - {{itemRetorno.artist_name}}</a></li>
+          </ul>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="desc-music">
+  <div class="content">
+    <h1>{{choicedMusic.artist_name}}</h1>
+    <h5>{{choicedMusic.track_name}}<h5>
+    </div>
+    <div class="image-main">
+      <img parallax parallax-ratio="0.6" src="{{choicedMusic.album_coverart}}" class="back">
+    </div>
+  </div>
+  <div class="lateral-cont">
+    <h2>Words</h2>
+    <div class="cloud-words">
+      <span ng-repeat="word in music.words" class="badge">
+        <img ng-if="word.correct" src="assets/correct.png">
+        <img ng-if="!word.correct" src="assets/wrong.png">
+        {{word.word}}
+      </span>
+    </div>
+  </div>
+  <div class="conteudo">
+    <h2>Lyric</h2>
+    <div class="lyric">
+      <form bind-unsafe-html="music.replaceableLyric"></form>
+    </div>
+  </div>

@@ -1,0 +1,14 @@
+{
+  "name": "music_client",
+  "version": "1.0.0",
+  "description": "client for app to write some parts of the music",
+  "main": "server.js",
+  "author": "William Andrade",
+  "license": "ISC",
+  "dependencies" : {
+    "express"    : "*",
+    "body-parser": "*",
+    "method-override": "*",
+    "request": "*"
+  }
+}

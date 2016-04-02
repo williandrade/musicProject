@@ -1,0 +1,14 @@
+.alert-correction{
+  z-index: 999999;
+  position: fixed;
+  margin-left: 50%;
+  top: -200px;
+  background-color: white;
+  border-radius: 50%;
+  height: auto;
+  box-shadow: 0px 0px 26px white;
+  transition: top .3s;
+}
+.alert-correction.show{
+  top:10px;
+}
